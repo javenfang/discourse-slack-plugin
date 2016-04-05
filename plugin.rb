@@ -47,7 +47,7 @@ after_initialize do
       when Net::HTTPSuccess
         Rails.logger.info("Slack webhook successfully sent to #{uri.host}. (post: #{post_url})")
       else
-        Rails.logger.error("#{uri.host}: #{response.code} - #{response.message}")
+        Rails.logger.error("#{uri.host}: #{response.code} - #{response.message}, #{response.body()}")
       end
     rescue => e
       Rails.logger.error("Error sending Slack hook: #{e.message}")
