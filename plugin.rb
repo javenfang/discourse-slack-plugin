@@ -42,6 +42,8 @@ after_initialize do
         ]
       }.to_json
 
+      Rails.logger.info("The request - #{request.body()}")
+
       response = http.request(request)
       case response
       when Net::HTTPSuccess
